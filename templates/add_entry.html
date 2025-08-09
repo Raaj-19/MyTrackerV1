@@ -1,0 +1,17 @@
+
+{% extends "base.html" %}
+{% block body %}
+<div class="container my-4">
+  <div class="card p-3">
+    <h4>Add New Entry</h4>
+    <form method="POST" action="/add">
+      <select name="type" class="form-select mb-2"><option>Income</option><option>Expense</option><option>Investment</option></select>
+      <input name="category" class="form-control mb-2" placeholder="Category">
+      <input name="amount" class="form-control mb-2" type="number" placeholder="Amount">
+      <input name="date" class="form-control mb-2" type="date" value="{{ '' }}">
+      <textarea name="notes" class="form-control mb-2" placeholder="Notes"></textarea>
+      <button class="btn btn-danger">Add</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

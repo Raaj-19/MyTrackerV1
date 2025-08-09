@@ -1,0 +1,15 @@
+
+{% extends "base.html" %}
+{% block body %}
+<div class="auth-bg">
+  <div class="auth-card container">
+    <h2 class="text-center">MyTracker</h2>
+    <form method="POST" action="/login">
+      <input class="form-control mb-2" name="email" placeholder="Email" required>
+      <input class="form-control mb-2" type="password" name="password" placeholder="Password" required>
+      <button class="btn btn-danger w-100">Login</button>
+    </form>
+    <p class="mt-2 text-center">Don't have an account? <a href="/register">Register</a></p>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,31 @@
+
+{% extends "base.html" %}
+{% block body %}
+<div class="container my-3">
+  <h4>Your Records</h4>
+  <div class="mb-2">
+    <a href="/add" class="btn btn-primary btn-sm">Add New</a>
+    <form class="d-inline" action="/export"><button class="btn btn-outline-success btn-sm">Export CSV</button></form>
+    <form class="d-inline" method="POST" action="/reset"><button class="btn btn-outline-danger btn-sm">Reset Data</button></form>
+  </div>
+  <table class="table table-sm table-striped">
+    <thead><tr><th>Type</th><th>Category</th><th>Amount</th><th>Date</th><th>Actions</th></tr></thead>
+    <tbody>
+    {% for r in rows %}
+      <tr>
+        <td>{{ r['r_type'] }}</td>
+        <td>{{ r['category'] }}</td>
+        <td>{{ r['amount'] }}</td>
+        <td>{{ r['date'] }}</td>
+        <td>
+          <a class="btn btn-sm btn-outline-primary" href="/record/{{ r['id'] }}/edit">Edit</a>
+          <form method="POST" action="/record/{{ r['id'] }}/delete" style="display:inline">
+            <button class="btn btn-sm btn-outline-danger">Delete</button>
+          </form>
+        </td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

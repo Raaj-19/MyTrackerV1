@@ -1,0 +1,16 @@
+
+{% extends "base.html" %}
+{% block body %}
+<div class="auth-bg">
+  <div class="auth-card container">
+    <h2 class="text-center">Create Account</h2>
+    <form method="POST" action="/register">
+      <input class="form-control mb-2" name="email" placeholder="Email" required>
+      <input class="form-control mb-2" name="display" placeholder="Display name (optional)">
+      <input class="form-control mb-2" type="password" name="password" placeholder="Password" required>
+      <button class="btn btn-danger w-100">Register</button>
+    </form>
+    <p class="mt-2 text-center"><a href="/login">Already have an account? Login</a></p>
+  </div>
+</div>
+{% endblock %}

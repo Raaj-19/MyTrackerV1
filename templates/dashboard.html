@@ -1,0 +1,82 @@
+
+{% extends "base.html" %}
+{% block body %}
+<nav class="navbar navbar-dark bg-dark">
+  <div class="container-fluid">
+    <span class="navbar-brand">MyTracker</span>
+    <div class="d-flex align-items-center">
+      <div class="me-3 text-white text-end">
+        <div id="greeting">Welcome</div>
+        <small id="last-login">{{ user["last_login"] }}</small>
+      </div>
+      <a href="/logout" class="btn btn-outline-light btn-sm">Logout</a>
+    </div>
+  </div>
+</nav>
+
+<div class="banner" {% if banner %} style="background-image: url('{{ banner }}');" {% endif %}></div>
+
+<div class="container my-3">
+  <div class="row">
+    <div class="col-12 mb-2">
+      <div class="card p-3">
+        <div class="d-flex justify-content-between align-items-center">
+          <div>
+            <h5 id="month-summary-title">This Month</h5>
+            <div class="d-flex" id="month-summary">
+              <div class="me-3">
+                <div class="small">Income</div><div id="sum-income">0</div>
+              </div>
+              <div class="me-3">
+                <div class="small">Expenses</div><div id="sum-expense">0</div>
+              </div>
+              <div>
+                <div class="small">Investments</div><div id="sum-invest">0</div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <button id="quick-add-btn" class="btn btn-danger">Quick Add</button>
+            <a href="/records" class="btn btn-outline-secondary">View Records</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 mb-3">
+      <div class="card p-3">
+        <canvas id="pieChart"></canvas>
+      </div>
+    </div>
+
+    <div class="col-12 mb-3">
+      <div class="card p-3">
+        <canvas id="barChart"></canvas>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Quick Add Modal -->
+<div class="modal" tabindex="-1" id="quickAddModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form id="quickAddForm">
+        <div class="modal-header"><h5 class="modal-title">Quick Add</h5></div>
+        <div class="modal-body">
+          <select name="type" class="form-select mb-2"><option>Income</option><option>Expense</option><option>Investment</option></select>
+          <input name="category" class="form-control mb-2" placeholder="Category">
+          <input name="amount" class="form-control mb-2" type="number" placeholder="Amount">
+          <input name="date" class="form-control mb-2" type="date" value="{{ "" }}">
+          <textarea name="notes" class="form-control" placeholder="Notes"></textarea>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" id="quickClose">Close</button>
+          <button type="submit" class="btn btn-danger">Add</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

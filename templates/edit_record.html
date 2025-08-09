@@ -1,0 +1,21 @@
+
+{% extends "base.html" %}
+{% block body %}
+<div class="container my-4">
+  <div class="card p-3">
+    <h4>Edit Entry</h4>
+    <form method="POST">
+      <select name="type" class="form-select mb-2">
+        <option {% if rec['r_type']=="Income" %}selected{% endif %}>Income</option>
+        <option {% if rec['r_type']=="Expense" %}selected{% endif %}>Expense</option>
+        <option {% if rec['r_type']=="Investment" %}selected{% endif %}>Investment</option>
+      </select>
+      <input name="category" class="form-control mb-2" value="{{ rec['category'] }}">
+      <input name="amount" class="form-control mb-2" type="number" value="{{ rec['amount'] }}">
+      <input name="date" class="form-control mb-2" type="date" value="{{ rec['date'] }}">
+      <textarea name="notes" class="form-control mb-2">{{ rec['notes'] }}</textarea>
+      <button class="btn btn-danger">Save</button>
+    </form>
+  </div>
+</div>
+{% endblock %}
