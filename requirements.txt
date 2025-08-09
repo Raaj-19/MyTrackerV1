@@ -1,0 +1,4 @@
+Flask==2.3.2
+Flask-Login==0.7.0
+Werkzeug==2.3.6
+gunicorn==21.2.0
